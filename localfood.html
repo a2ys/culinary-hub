@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Food Search</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding-top: 50px;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #e67e22; /* Orange color */
+        }
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        input[type="text"] {
+            width: 60%;
+            padding: 12px 40px 12px 20px; /* Added padding for icon */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .filter-section {
+            margin-bottom: 30px;
+        }
+
+        .filter-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .filter-label {
+            margin-right: 10px;
+        }
+
+        .filter-checkbox {
+            margin-right: 10px;
+        }
+
+        .sort-select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .arrow-icon {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Local Food</h1>
+        <div class="search-container">
+            <img class="search-icon" src="magnifying-glass.svg" alt="Search Icon"> <!-- Use your own search icon -->
+            <input type="text" id="searchInput" placeholder="Search for food...">
+        </div>
+        <div class="filter-section">
+            <h2 class="filter-title">Location</h2>
+            <input type="text" id="locationInput" placeholder="Enter location...">
+        </div>
+        <div class="filter-section">
+            <h2 class="filter-title">Filters</h2>
+            <div class="filter-option">
+                <input type="checkbox" class="filter-checkbox" id="vegCheckbox">
+                <label class="filter-label" for="vegCheckbox">Veg</label>
+            </div>
+            <div class="filter-option">
+                <input type="checkbox" class="filter-checkbox" id="nonVegCheckbox">
+                <label class="filter-label" for="nonVegCheckbox">Non-Veg</label>
+            </div>
+            <div class="filter-option">
+                <select class="sort-select">
+                    <option value="ratingAsc">Rating (Low to High)</option>
+                    <option value="ratingDesc">Rating (High to Low)</option>
+                </select>
+                <span class="arrow-icon">&#8593;</span>
+            </div>
+            <div class="filter-option">
+                <select class="sort-select">
+                    <option value="priceAsc">Price (Low to High)</option>
+                    <option value="priceDesc">Price (High to Low)</option>
+                </select>
+                <span class="arrow-icon">&#8593;</span>
+            </div>
+            <!-- Add more filter options here -->
+        </div>
+    </div>
+</body>
+
+</html>
