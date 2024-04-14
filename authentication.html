@@ -29,11 +29,11 @@
         }
 
         h2.title {
-            margin-bottom: 30px; /* Increased space between title and buttons */
+            margin-bottom: 30px;
             font-size: 24px;
             font-weight: bold;
             color: black;
-            font-style: italic; /* Changed font style to italic */
+            font-style: italic;
         }
 
         input[type="text"],
@@ -118,6 +118,8 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    
     <script>
         function toggleDarkMode() {
             document.body.style.backgroundColor = '#333';
@@ -127,17 +129,32 @@
             document.body.style.backgroundColor = '#f4f4f4';
         }
 
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+        document.addEventListener('DOMContentLoaded', function () {
+            const { createClient } = supabase
+            const _supa = createClient('https://jddxvfqqlvywfkywkbrs.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpkZHh2ZnFxbHZ5d2ZreXdrYnJzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTMxMjU4MjIsImV4cCI6MjAyODcwMTgyMn0.bg0jGSvVsmkh16COddXUNXWSTogq3DepugNKiJZwX8M');
+            
+            document.getElementById('loginForm').addEventListener('submit', async function (e) {
+                e.preventDefault();
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
 
-            console.log("Email:", email);
-            console.log("Password:", password);
+                try {
+                    const { user, session, error } = await _supa.auth.signInWithPassword({
+                        email,
+                        password,
+                    });
 
-            alert("Login successful!");
+                    if (error) {
+                        throw error;
+                    }
 
+                    window.location.href = "homepage.html";
+                } catch (error) {
+                    console.error('Sign in error:', error.message);
+                    alert('Sign in failed. Please check your email and password.');
+                }
+            });
         });
     </script>
 </body>
