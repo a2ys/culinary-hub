@@ -5,17 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
+            color: #333;
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             text-align: center;
+            position: relative; /* Add relative positioning to the body */
         }
 
         .container {
@@ -60,30 +64,22 @@
             cursor: pointer;
         }
 
-        .social-buttons {
-            margin-top: 20px;
-        }
-
-        .social-button {
-            display: inline-block;
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background-color: #fff;
-            color: #333;
-            font-size: 1rem;
+        /* Theme toggle button */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            font-size: 1.5rem;
+            color: #34495e; /* Dark color for button */
+            background-color: transparent;
+            border: none;
             cursor: pointer;
-            text-align: left;
+            transition: color 0.3s ease;
         }
 
-        .google-icon {
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 10px;
-            width: 20px;
-            height: 20px;
-            object-fit: cover;
+        .theme-toggle:hover {
+            color: #2c3e50; /* Darker color on hover */
         }
     </style>
 </head>
@@ -98,6 +94,30 @@
             <button type="submit">Sign Up</button>
         </form>
     </div>
+
+    <!-- Theme toggle button (sun/moon) -->
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-sun"></i> <!-- Sun icon -->
+    </button>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            // Check if dark mode is currently active
+            const isDarkMode = body.classList.contains('dark-mode');
+
+            // Toggle between dark mode and light mode
+            if (isDarkMode) {
+                body.classList.remove('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Change to sun icon
+            } else {
+                body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Change to moon icon
+            }
+        }
+    </script>
 </body>
 
 </html>

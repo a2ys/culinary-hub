@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipes & Restaurants</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,15 +16,18 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            transition: background-color 0.3s ease;
         }
 
         .container {
             text-align: center;
+            margin-bottom: 50px; /* Increase space between title and buttons */
         }
 
         h1 {
             font-size: 3rem;
             margin-bottom: 30px;
+            font-style: italic; /* Make title italic */
             color: #e67e22; /* Orange color */
         }
 
@@ -69,6 +73,24 @@
             object-fit: cover;
             border-radius: 50%;
         }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            font-size: 1.5rem;
+            color: #34495e; /* Dark color for button */
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            color: #2c3e50; /* Darker color on hover */
+        }
     </style>
 </head>
 
@@ -87,6 +109,22 @@
             </button>
         </div>
     </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-sun"></i> <!-- Sun icon -->
+        <i class="fas fa-moon"></i> <!-- Moon icon -->
+    </button>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            if (body.classList.contains('dark-theme')) {
+                body.classList.remove('dark-theme');
+            } else {
+                body.classList.add('dark-theme');
+            }
+        }
+    </script>
 </body>
 
 </html>
