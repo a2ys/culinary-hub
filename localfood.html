@@ -16,6 +16,7 @@
             align-items: flex-start;
             min-height: 100vh;
             padding-top: 50px;
+            transition: background-color 0.3s ease; /* Added transition for smooth mode change */
         }
 
         .container {
@@ -90,10 +91,28 @@
         .arrow-icon {
             margin-left: 5px;
         }
+
+        .toggle-mode-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #FFD700; /* Yellow color */
+        }
+
+        .toggle-mode-btn .toggle-icon {
+            font-size: 24px;
+        }
     </style>
 </head>
 
 <body>
+    <button class="toggle-mode-btn" id="toggleModeBtn" onclick="toggleMode()">
+        <span class="toggle-icon">&#9728;</span>
+    </button>
+
     <div class="container">
         <h1>Local Food</h1>
         <div class="search-container">
@@ -131,6 +150,25 @@
             <!-- Add more filter options here -->
         </div>
     </div>
+
+    <script>
+        let darkMode = false;
+        const toggleIcon = document.querySelector('.toggle-icon');
+
+        function toggleMode() {
+            darkMode = !darkMode;
+            const body = document.body;
+            const toggleBtn = document.getElementById('toggleModeBtn');
+
+            if (darkMode) {
+                body.style.backgroundColor = '#333';
+                toggleIcon.innerHTML = '&#127769;'; // Moon icon for dark mode
+            } else {
+                body.style.backgroundColor = '#f8f9fa';
+                toggleIcon.innerHTML = '&#9728;'; // Sun icon for light mode
+            }
+        }
+    </script>
 </body>
 
 </html>
